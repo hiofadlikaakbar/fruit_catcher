@@ -5,19 +5,29 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);   
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(title: 'Fruit Catcher Game', home: GameScreen());
+    return const MaterialApp(                   
+      title: 'Fruit Catcher Game',
+      home: GameScreen(),
+    );
   }
 }
 
-class GameScreen extends StatelessWidget {
-  const GameScreen({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(body: Center(child: Text('Ui Game')));
-  }
+class GameScreen extends StatefulWidget {
+ const GameScreen({super.key});
+ @override
+ State<GameScreen> createState() => _GameScreenState();
 }
+
+class _GameScreenState extends State<GameScreen> {
+
+ @override
+ void initState() {
+ super.initState();
+ }
+
+
