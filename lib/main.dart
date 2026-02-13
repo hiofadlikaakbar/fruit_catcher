@@ -12,3 +12,12 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(title: 'Fruit Catcher Game', home: GameScreen());
   }
 }
+
+class GameScreen extends StatelessWidget {
+  const GameScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold(body: Center(child: Text('Ui Game')));
+  }
+}
