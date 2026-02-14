@@ -73,9 +73,7 @@ class _GameScreenState extends State<GameScreen> {
                     children: [
                       IconButton(
                         icon: const Icon(Icons.music_note, color: Colors.black),
-                        onPressed: () {
-                          counter.value++;
-                        },
+                        onPressed: () {},
                       ),
                       IconButton(
                         icon: const Icon(Icons.volume_up, color: Colors.black),
@@ -87,8 +85,15 @@ class _GameScreenState extends State<GameScreen> {
               ],
             ),
           ),
-          // expanded agar layar ambil sisa
-          // Positioned
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: ElevatedButton(
+              onPressed: () {
+                counter.value++;
+              },
+              child: const Text("Tambah Score"),
+            ),
+          ),
         ],
       ),
     );
