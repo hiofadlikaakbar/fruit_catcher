@@ -40,6 +40,7 @@ class _GameScreenState extends State<GameScreen> {
                 borderRadius: BorderRadius.circular(10),
               ),
 
+              // penambahan code disini
               child: const Text(
                 'Score: 1',
                 style: TextStyle(
@@ -49,6 +50,19 @@ class _GameScreenState extends State<GameScreen> {
                 ),
               ),
             ), //Container
+          ),
+
+          Positioned(
+            top: 50,
+            right: 20,
+            child: Row(
+              children: [
+                IconButton(
+                  icon: const Icon(Icons.music_note, color: Colors.black),
+                  onPressed: () {},
+                ),
+              ],
+            ),
           ), // Positioned
         ],
       ),
