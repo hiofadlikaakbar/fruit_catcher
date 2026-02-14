@@ -20,9 +20,16 @@ class GameScreen extends StatefulWidget {
 }
 
 class _GameScreenState extends State<GameScreen> {
+  final ValueNotifier<int> counter = ValueNotifier(1);
   @override
   void initState() {
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    counter.dispose();
+    super.dispose();
   }
 
   @override
@@ -40,7 +47,6 @@ class _GameScreenState extends State<GameScreen> {
                 borderRadius: BorderRadius.circular(10),
               ),
 
-              // penambahan code disini
               child: const Text(
                 'Score: 1',
                 style: TextStyle(
