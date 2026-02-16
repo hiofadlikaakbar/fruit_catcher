@@ -2,9 +2,7 @@ import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/material.dart';
 
-class Basket extends PositionComponent
-    with HasGameRef, CollisionCallbacks {
-
+class Basket extends PositionComponent with HasGameRef, CollisionCallbacks {
   Basket() : super(size: Vector2(80, 60));
 
   @override
@@ -13,10 +11,7 @@ class Basket extends PositionComponent
 
     anchor = Anchor.center;
 
-    position = Vector2(
-      gameRef.size.x / 2,
-      gameRef.size.y - 100,
-    );
+    position = Vector2(gameRef.size.x / 2, gameRef.size.y - 100);
 
     add(RectangleHitbox());
   }
@@ -26,4 +21,25 @@ class Basket extends PositionComponent
     super.render(canvas);
 
     final paint = Paint()
-     
+      ..color = Colors.brown
+      ..style = PaintingStyle.fill;
+
+    final rect = RRect.fromRectAndRadius(
+      Rect.fromLTWH(0, 0, size.x, size.y),
+      const Radius.circular(10),
+    );
+
+    canvas.drawRRect(rect, paint);
+
+    final handlePaint = Paint()
+      ..color = Colors.brown.shade800
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 3;
+
+    final handlePath = Path()
+      ..moveTo(10, 0)
+      ..quadraticBezierTo(size.x / 2, -20, size.x - 10, 0);
+
+    canvas.drawPath(handlePath, handlePaint);
+  }
+}
