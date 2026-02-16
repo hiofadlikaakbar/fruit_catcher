@@ -11,19 +11,17 @@ class AudioManager {
   double _musicVolume = 0.7;
   double _sfxVolume = 1.0;
 
-  
   bool get isMusicEnabled => _isMusicEnabled;
   bool get isSfxEnabled => _isSfxEnabled;
   double get musicVolume => _musicVolume;
   double get sfxVolume => _sfxVolume;
-
 
   Future<void> initialize() async {
     try {
       FlameAudio.bgm.initialize();
 
       await FlameAudio.audioCache.loadAll([
-        'music/papyrus-theme.mp3', 
+        'music/papyrus-theme.mp3',
         'sfx/collect.mp3',
         'sfx/explosion.mp3',
         'sfx/jump.mp3',
@@ -35,21 +33,16 @@ class AudioManager {
     }
   }
 
-
   void playBackgroundMusic() {
     if (_isMusicEnabled) {
       try {
-        FlameAudio.bgm.play(
-          'music/papyrus-theme.mp3',
-          volume: _musicVolume,
-        );
+        FlameAudio.bgm.play('music/papyrus-theme.mp3', volume: _musicVolume);
       } catch (e) {
         print('Error playing background music: $e');
       }
     }
   }
 
- 
   void stopBackgroundMusic() {
     try {
       FlameAudio.bgm.stop();
@@ -58,7 +51,6 @@ class AudioManager {
     }
   }
 
-  
   void pauseBackgroundMusic() {
     try {
       FlameAudio.bgm.pause();
@@ -67,7 +59,6 @@ class AudioManager {
     }
   }
 
-  
   void resumeBackgroundMusic() {
     if (_isMusicEnabled) {
       try {
@@ -78,33 +69,61 @@ class AudioManager {
     }
   }
 
-
   void playSfx(String fileName) {
     if (_isSfxEnabled) {
       try {
-        FlameAudio.play(
-          'sfx/$fileName',
-          volume: _sfxVolume,
-        );
+        FlameAudio.play('sfx/$fileName', volume: _sfxVolume);
       } catch (e) {
         print('Error playing SFX: $e');
       }
     }
   }
 
-  
   void playSfxWithVolume(String fileName, double volume) {
     if (_isSfxEnabled) {
       try {
-        final adjustedVolume =
-            (volume * _sfxVolume).clamp(0.0, 1.0);
+        final adjustedVolume = (volume * _sfxVolume).clamp(0.0, 1.0);
 
-        FlameAudio.play(
-          'sfx/$fileName',
-          volume: adjustedVolume,
-        );
+        FlameAudio.play('sfx/$fileName', volume: adjustedVolume);
       } catch (e) {
         print('Error playing SFX with volume: $e');
       }
     }
   }
+
+  void setMusicVolume(double volume) {
+    _musicVolume = volume.clamp(0.0, 1.0);
+
+    try {
+      FlameAudio.bgm.audioPlayer.setVolume(_musicVolume);
+    } catch (e) {
+      print('Error setting music volume: $e');
+    }
+  }
+
+  void setSfxVolume(double volume) {
+    _sfxVolume = volume.clamp(0.0, 1.0);
+  }
+
+  void toggleMusic() {
+    _isMusicEnabled = !_isMusicEnabled;
+
+    if (_isMusicEnabled) {
+      resumeBackgroundMusic();
+    } else {
+      pauseBackgroundMusic();
+    }
+  }
+
+  void toggleSfx() {
+    _isSfxEnabled = !_isSfxEnabled;
+  }
+
+  void dispose() {
+    try {
+      FlameAudio.bgm.dispose();
+    } catch (e) {
+      print('Error disposing audio: $e');
+    }
+  }
+}
