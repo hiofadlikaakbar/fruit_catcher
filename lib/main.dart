@@ -22,3 +22,31 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+class GameScreen extends StatefulWidget {
+  const GameScreen({super.key});
+
+  @override
+  State<GameScreen> createState() => _GameScreenState();
+}
+
+class _GameScreenState extends State<GameScreen> {
+  late final FruitCatcherGame game;
+
+  @override
+  void initState() {
+    super.initState();
+    game = FruitCatcherGame();
+  }
+
+  @override
+  void dispose() {
+    game.onRemove();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(body: GameWidget(game: game));
+  }
+}
