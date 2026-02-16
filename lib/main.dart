@@ -76,11 +76,16 @@ class _GameScreenState extends State<GameScreen> {
               children: [
                 IconButton(
                   icon: const Icon(Icons.music_note, color: Colors.black),
-                  onPressed: () {},
+                  onPressed: () {
+                    AudioManager().toggleMusic();
+                  },
                 ),
+
                 IconButton(
                   icon: const Icon(Icons.volume_up, color: Colors.black),
-                  onPressed: () {},
+                  onPressed: () {
+                    AudioManager().toggleSfx();
+                  },
                 ),
               ],
             ),
