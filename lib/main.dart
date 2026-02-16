@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'game/managers/audio_manager.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Initialize audio sekali saat aplikasi start
+  await AudioManager().initialize();
+
   runApp(const MyApp());
 }
 
