@@ -35,7 +35,7 @@ class AudioManager {
     }
   }
 
- 
+
   void playBackgroundMusic() {
     if (_isMusicEnabled) {
       try {
@@ -46,5 +46,23 @@ class AudioManager {
       } catch (e) {
         print('Error playing background music: $e');
       }
+    }
+  }
+
+ 
+  void stopBackgroundMusic() {
+    try {
+      FlameAudio.bgm.stop();
+    } catch (e) {
+      print('Error stopping background music: $e');
+    }
+  }
+
+  
+  void pauseBackgroundMusic() {
+    try {
+      FlameAudio.bgm.pause();
+    } catch (e) {
+      print('Error pausing background music: $e');
     }
   }
