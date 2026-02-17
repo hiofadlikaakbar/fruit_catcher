@@ -1,16 +1,3 @@
-# fruit_catcher
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+**<h1 align='center'>Demo</h1>**
+<img width="488" height="653" alt="Screenshot 2026-02-17 133131" src="https://github.com/user-attachments/assets/ece6ad2f-96d8-4803-b72a-1d39803dcdfa" />
