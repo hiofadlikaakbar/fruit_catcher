@@ -36,11 +36,9 @@ class FruitCatcherGame extends FlameGame
 
     camera.viewport = FixedResolutionViewport(resolution: Vector2(400, 800));
 
-    // Add basket
     basket = Basket();
     await add(basket);
 
-    // Play background music
     AudioManager().playBackgroundMusic();
   }
 
