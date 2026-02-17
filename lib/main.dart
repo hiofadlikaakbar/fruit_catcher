@@ -46,6 +46,61 @@ class _GameScreenState extends State<GameScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: GameWidget(game: game));
+    return Scaffold(
+      body: SafeArea(
+        child: Stack(
+          children: [
+            GameWidget(game: game),
+
+            Positioned(
+              top: 20,
+              left: 20,
+              child: ValueListenableBuilder<int>(
+                valueListenable: game.scoreNotifier,
+                builder: (context, score, _) {
+                  return Container(
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: Colors.black54,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Text(
+                      "Score: $score",
+                      style: const TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+
+            // MUSIC & SFX BUTTONS
+            Positioned(
+              top: 20,
+              right: 20,
+              child: Row(
+                children: [
+                  IconButton(
+                    icon: const Icon(Icons.music_note, color: Colors.white),
+                    onPressed: () {
+                      AudioManager().toggleMusic();
+                    },
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.volume_up, color: Colors.white),
+                    onPressed: () {
+                      AudioManager().toggleSfx();
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
