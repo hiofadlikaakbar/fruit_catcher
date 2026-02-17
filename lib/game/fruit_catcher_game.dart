@@ -34,8 +34,6 @@ class FruitCatcherGame extends FlameGame
   Future<void> onLoad() async {
     await super.onLoad();
 
-    camera.viewport = FixedResolutionViewport(resolution: Vector2(400, 800));
-
     basket = Basket();
     await add(basket);
 

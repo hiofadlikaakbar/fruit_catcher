@@ -11,9 +11,14 @@ class Basket extends PositionComponent with HasGameRef, CollisionCallbacks {
 
     anchor = Anchor.center;
 
-    position = Vector2(gameRef.size.x / 2, gameRef.size.y - 100);
-
     add(RectangleHitbox());
+  }
+
+  @override
+  void onGameResize(Vector2 gameSize) {
+    super.onGameResize(gameSize);
+
+    position = Vector2(gameSize.x / 2, gameSize.y - 80);
   }
 
   @override
