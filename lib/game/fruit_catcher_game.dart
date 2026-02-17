@@ -1,9 +1,7 @@
 import 'dart:async';
 import 'dart:math';
-import 'dart:ui';
 import 'package:flame/game.dart';
 import 'package:flame/components.dart';
-import 'package:flame/collisions.dart';
 import 'package:flutter/material.dart';
 import 'components/basket.dart';
 import 'components/fruit.dart';
