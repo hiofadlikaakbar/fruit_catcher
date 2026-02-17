@@ -109,7 +109,7 @@ class AudioManager {
     _isMusicEnabled = !_isMusicEnabled;
 
     if (_isMusicEnabled) {
-      resumeBackgroundMusic();
+      playBackgroundMusic();
     } else {
       pauseBackgroundMusic();
     }
