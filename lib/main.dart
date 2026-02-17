@@ -41,7 +41,6 @@ class _GameScreenState extends State<GameScreen> {
 
   @override
   void dispose() {
-    game.onRemove();
     super.dispose();
   }
 
